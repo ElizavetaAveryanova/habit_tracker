@@ -3,11 +3,15 @@ from django.db import models
 
 NULLABLE = {"blank": True, "null": True}
 
+
 class User(AbstractUser):
     username = None
 
     email = models.EmailField(
         verbose_name="Почта", unique=True, help_text="Укажите почту"
+    )
+    chat_id = models.CharField(
+        max_length=20, **NULLABLE, verbose_name="chat id телеграмма"
     )
 
     USERNAME_FIELD = "email"

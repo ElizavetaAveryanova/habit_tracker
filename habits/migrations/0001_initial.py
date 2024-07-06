@@ -15,47 +15,149 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Place',
+            name="Place",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=20, verbose_name='Название')),
-                ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Автор')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=20, verbose_name="Название")),
+                (
+                    "created_by",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Автор",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Место',
-                'verbose_name_plural': 'Места',
+                "verbose_name": "Место",
+                "verbose_name_plural": "Места",
             },
         ),
         migrations.CreateModel(
-            name='Reward',
+            name="Reward",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100, verbose_name='Название вознаграждения')),
-                ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Автор')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "title",
+                    models.CharField(
+                        max_length=100, verbose_name="Название вознаграждения"
+                    ),
+                ),
+                (
+                    "created_by",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Автор",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Вознаграждение',
-                'verbose_name_plural': 'Вознаграждения',
+                "verbose_name": "Вознаграждение",
+                "verbose_name_plural": "Вознаграждения",
             },
         ),
         migrations.CreateModel(
-            name='Habit',
+            name="Habit",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('time', models.TimeField(verbose_name='Время выполнения')),
-                ('action', models.CharField(max_length=250, verbose_name='Действие')),
-                ('period', models.PositiveSmallIntegerField(default=1, verbose_name='Периодичность выполнения в днях')),
-                ('duration', models.PositiveSmallIntegerField(verbose_name='Продолжительность выполнения в секундах')),
-                ('is_public', models.BooleanField(default=False, verbose_name='Признак публичности')),
-                ('is_pleasing_habit', models.BooleanField(default=False, verbose_name='Признак приятной привычки')),
-                ('created_by', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='Автор')),
-                ('reward_with_pleasing_habit', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='habits.habit', verbose_name='Вознаграждение приятной привычкой')),
-                ('place', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='habits.place', verbose_name='Место выполнения')),
-                ('reward_with_action', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='habits.reward', verbose_name='Вознаграждение действием')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("time", models.TimeField(verbose_name="Время выполнения")),
+                ("action", models.CharField(max_length=250, verbose_name="Действие")),
+                (
+                    "period",
+                    models.PositiveSmallIntegerField(
+                        default=1, verbose_name="Периодичность выполнения в днях"
+                    ),
+                ),
+                (
+                    "duration",
+                    models.PositiveSmallIntegerField(
+                        verbose_name="Продолжительность выполнения в секундах"
+                    ),
+                ),
+                (
+                    "is_public",
+                    models.BooleanField(
+                        default=False, verbose_name="Признак публичности"
+                    ),
+                ),
+                (
+                    "is_pleasing_habit",
+                    models.BooleanField(
+                        default=False, verbose_name="Признак приятной привычки"
+                    ),
+                ),
+                (
+                    "created_by",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="Автор",
+                    ),
+                ),
+                (
+                    "reward_with_pleasing_habit",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="habits.habit",
+                        verbose_name="Вознаграждение приятной привычкой",
+                    ),
+                ),
+                (
+                    "place",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="habits.place",
+                        verbose_name="Место выполнения",
+                    ),
+                ),
+                (
+                    "reward_with_action",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="habits.reward",
+                        verbose_name="Вознаграждение действием",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Привычка',
-                'verbose_name_plural': 'Привычки',
+                "verbose_name": "Привычка",
+                "verbose_name_plural": "Привычки",
             },
         ),
     ]
