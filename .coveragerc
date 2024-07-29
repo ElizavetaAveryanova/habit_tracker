@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [run]
 omit =
     */migrations/*
@@ -5,4 +6,13 @@ omit =
     */asgi.py
     */wsgi.py
     */__init__.py
+=======
+[run]
+omit =
+    */migrations/*
+    */tests.py
+    */asgi.py
+    */wsgi.py
+    */__init__.py
+>>>>>>> b06ae89223852ac8726da1a522d7e09db2c8c7e7
     */apps.py
